@@ -35,8 +35,8 @@ int main(int argc, char* argv[]) {
     MPI_Comm_rank(new_communicator, &my_rank);
     MPI_Cart_coords(new_communicator, my_rank, 2, my_coords);
 	
-	MPI_Barrier(MPI_COMM_WORLD);
-	start = MPI_Wtime();
+	// MPI_Barrier(MPI_COMM_WORLD);
+	// start = MPI_Wtime();
 
     int send_buf[BUF_SIZE] = {0};
     int new_buf[BUF_SIZE];
@@ -139,15 +139,15 @@ int main(int argc, char* argv[]) {
     }
     fprintf(stdout, "\n");
 	
-	MPI_Barrier(MPI_COMM_WORLD);
-	finish = MPI_Wtime();
+	// MPI_Barrier(MPI_COMM_WORLD);
+	// finish = MPI_Wtime();
 
     MPI_Finalize();
 
 
-	if (my_rank == 0) {
-	duration = finish - start;
-	fprintf(stdout, "Time elapsed:  %f sec\n", duration);
-	}
+	// if (my_rank == 0) {
+	// duration = finish - start;
+	// fprintf(stdout, "Time elapsed:  %f sec\n", duration);
+	// }
     return EXIT_SUCCESS;
 }
