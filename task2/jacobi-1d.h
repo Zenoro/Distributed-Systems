@@ -1,15 +1,9 @@
 #ifndef _JACOBI_1D_H
-
 #define _JACOBI_1D_H
-
 # if !defined(MINI_DATASET) && !defined(SMALL_DATASET) && !defined(MEDIUM_DATASET) && !defined(LARGE_DATASET) && !defined(EXTRALARGE_DATASET)
-
 #define MINI_DATASET
-
 # endif
-
 # if !defined(TSTEPS) && !defined(N)
-
 # ifdef MINI_DATASET
 #define TSTEPS 20
 #define N 30

@@ -326,7 +326,7 @@ int main(int argc, char *argv[])
     MPI_Comm_size(comm, &size);
     MPI_Comm_rank(comm, &rank);
 
-    for (i = 0; i < 1; i++)
+    for (i = 0; i < 2; i++)
     {
         int n = n_s[i];
         int tsteps = step_s[i];
@@ -355,11 +355,6 @@ int main(int argc, char *argv[])
         {
             bench_timer_stop();
             bench_timer_print();
-
-            // printf("A\n");
-            // print_array(n, A);
-            printf("B\n");
-            print_array(n, B);
         }
 
         free(A);
