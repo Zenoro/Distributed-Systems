@@ -56,12 +56,12 @@ int main(int argc, char* argv[]) {
         MPI_Isend(send_buf, BUF_SIZE, MPI_INT, my_rank - MATRIX_SIZE, 0, MPI_COMM_WORLD, &request);
         MPI_Recv(recv_buf, BUF_SIZE, MPI_INT, my_rank - MATRIX_SIZE, 0, MPI_COMM_WORLD, &status);
     }
-    
+
 // Второй ряд
     if (my_coords[0] == 1) {
     	MPI_Recv(new_buf, BUF_SIZE, MPI_INT, my_rank - MATRIX_SIZE, 0, MPI_COMM_WORLD, &status);
     	new_buf[my_rank] = my_rank;
-    	
+
         MPI_Isend(new_buf, BUF_SIZE, MPI_INT, my_rank + MATRIX_SIZE, 0, MPI_COMM_WORLD, &request);
         MPI_Recv(recv_buf, BUF_SIZE, MPI_INT, my_rank + MATRIX_SIZE, 0, MPI_COMM_WORLD, &status);
         MPI_Isend(recv_buf, BUF_SIZE, MPI_INT, my_rank - MATRIX_SIZE, 0, MPI_COMM_WORLD, &request);
@@ -102,10 +102,10 @@ int main(int argc, char* argv[]) {
 			concat_buffers(send_buf, new_buf);
 			MPI_Recv(new_buf, BUF_SIZE, MPI_INT, my_rank - 1, 0, MPI_COMM_WORLD, &status);
 			concat_buffers(send_buf, new_buf);
-			
+
 			MPI_Isend(send_buf, BUF_SIZE, MPI_INT, my_rank + 1, 0, MPI_COMM_WORLD, &request);
 			MPI_Recv(recv_buf, BUF_SIZE, MPI_INT, my_rank + 1, 0, MPI_COMM_WORLD, &status);
-			
+
 			MPI_Isend(recv_buf, BUF_SIZE, MPI_INT, my_rank - 1, 0, MPI_COMM_WORLD, &request);
 			MPI_Isend(recv_buf, BUF_SIZE, MPI_INT, my_rank + MATRIX_SIZE, 0, MPI_COMM_WORLD, &request);
 			MPI_Isend(recv_buf, BUF_SIZE, MPI_INT, my_rank - MATRIX_SIZE, 0, MPI_COMM_WORLD, &request);
